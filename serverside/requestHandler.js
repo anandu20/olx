@@ -12,19 +12,43 @@ export async function getProducts(req,res) {
         console.log(user);
         if(!user) 
             return res.status(403).send({msg:"Unauthorized access"})
-        const employees=await userSchema.find();
-        res.status(200).send({employees,username:user.username})
+        const products=await userSchema.find();
+        res.status(200).send({products,profile:user.profile,id:user._id})
         
     } catch (error) {
         res.status(404).send({msg:error})
     }
 }
 
+
+export async function getUser(req,res) {
+    try {
+        const {id}=req.params;
+        const data=await userSchema.findOne({_id:id});
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+
+export async function editUser(req,res) {
+    try {
+        const {_id}=req.params;
+    const {...user}=req.body;
+    const data=await userSchema.updateOne({_id},{$set:{...user}});
+    res.status(201).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+    
+}
+
+
 export async function signUp(req,res) {
     try{
-        const {email,username,password,cpassword } = req.body;
-        console.log(email,username,password,cpassword);
-        if(!(email&& username&& password&& cpassword))
+        const {email,username,password,cpassword,place,profile,address,phone,pincode} = req.body;
+        console.log(email,username,password,cpassword,place,profile,address,phone,pincode);
+        if(!(email&& username&& password&& cpassword && place && profile && address && phone && pincode))
             return res.status(404).send({msg:"fields are empty"})
         if(password !== cpassword)
             return res.status(404).send({msg:"password not matching"})
@@ -33,7 +57,7 @@ export async function signUp(req,res) {
         .then((hashedPassword)=>{
             console.log(hashedPassword);
             userSchema
-            .create({email,username,password:hashedPassword})
+            .create({email,username,password:hashedPassword,place,profile,address,phone,pincode})
             .then(()=>{
                 console.log("success");
                 return res.status(201).send({msg:"successs"})
@@ -41,13 +65,15 @@ export async function signUp(req,res) {
             .catch((error)=>{
                 console.log("faliure");
                 return res.status(404).send({msg:"not registered"})
+
             })
         })
     }
      catch(error){
         return res.status(404).send({msg:error})
 
-    }  
+    }
+    
 }
 
 export async function signIn(req,res) {
@@ -68,4 +94,7 @@ export async function signIn(req,res) {
     const token = await sign({userId:user._id},process.env.JWT_KEY,{expiresIn:"24h"});
     console.log(token);
     return res.status(200).send({msg:"successfully logged in",token})
+    
+    
+    
 }

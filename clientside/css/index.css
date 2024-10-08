@@ -14,10 +14,15 @@
         width: 50px;
     }
     .navbar button{
+        width: 100px;
         padding: 10px 15px;
         border-radius: 50px;
         font-weight: bolder;
         border: 5px solid orange;
+    }
+    .navbar a{
+        text-decoration: none;
+        color: black;
     }
     .container {
         position: relative;
@@ -107,3 +112,35 @@
     .btns{
         margin-left: 15%;
     }
+    #products{
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    .prods{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        text-align: center;
+        margin-left: 2%;
+        margin-top: 2%;
+        padding: 1%;
+        border-radius: 8px;
+
+    }
+    .prods img{
+        height: 250px;
+        border-radius: 8px;
+    }
+    .content{
+        text-align: center;
+        color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: lighter;
+        font-size: 11px;
+    }
+    .prods a{
+        text-decoration: none; 
+    }
+    /* we use anchor tag to fetch the details of product so give text decoration none for prods. a  to remove underline */

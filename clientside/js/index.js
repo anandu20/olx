@@ -8,6 +8,24 @@ async function getProducts() {
             document.getElementById("profileImage").src=`${result.profile}`
             document.getElementById("img2").src=`${result.profile}`
             document.getElementById("link").innerHTML=`<a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a>`
+            document.getElementById("but").innerHTML=`<a href="./pages/addprod.html?id=${result.id}">+ SELL</a>`
+            console.log(result);
+            str=``;
+            result.products.map((product)=>{
+                str+=`
+                <div class="prods">
+                <a href="./pages/product.html?id=${product._id}">  
+                <img src="${product.images[0]}" alt=""> 
+               
+                 <div class="content">
+                     <h1>${product.pname}</h1>
+                     <h2>Rs ${product.price}</h2>
+                     <h3>${product.description}</h3>
+                 </div>
+                 </a>
+            </div>`
+            });
+            document.getElementById("products").innerHTML=str;
     }
     else{
         alert("Error");

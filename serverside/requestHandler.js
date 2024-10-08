@@ -1,4 +1,5 @@
 import userSchema from './models/user.model.js'
+import productSchema from "./models/product.model.js"
 import bcrypt from 'bcrypt'
 import pkg from "jsonwebtoken";
 
@@ -12,19 +13,51 @@ export async function getProducts(req,res) {
         console.log(user);
         if(!user) 
             return res.status(403).send({msg:"Unauthorized access"})
-        const products=await userSchema.find();
+        const products=await productSchema.find();
         res.status(200).send({products,profile:user.profile,id:user._id})
         
     } catch (error) {
         res.status(404).send({msg:error})
     }
 }
+export async function getSProduct(req,res) {
+    try {
+        const {id}=req.params
+        const data=await productSchema.find({sellerId:id});
+        console.log(data);
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
 
+export async function addProducts(req,res){
+    try{  
+        const{pname,price,category,description,place,sellerId,address,pincode,phone,images}=req.body;
+        console.log(pname);
+            productSchema.create({pname,price,category,description,place,sellerId,address,pincode,phone,images})
+            .then(()=>{
+                console.log("success");
+                return res.status(201).send({msg:"success"})
+            })
+            .catch((error)=>{
+                console.log("failed");
+                return res.status(404).send({msg:"fail"})
+
+            })
+    }catch(error){
+        res.status(404).send(error);
+    
+        
+    }
+}
 
 export async function getUser(req,res) {
     try {
         const {id}=req.params;
         const data=await userSchema.findOne({_id:id});
+        console.log("HAI");
+        
         res.status(200).send(data);
     } catch (error) {
         res.status(404).send(error)

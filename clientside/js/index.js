@@ -4,6 +4,7 @@ async function getProducts() {
       const res=await fetch("http://localhost:3000/api/getproducts",{headers:{
         "Authorization" : `Bearer ${value}`}})
         const result = await res.json();
+        
     if(res.status==200){
             document.getElementById("profileImage").src=`${result.profile}`
             document.getElementById("img2").src=`${result.profile}`
@@ -51,3 +52,37 @@ function logout(){
     localStorage.removeItem("Auth");
     window.location.href="../pages/signin.html"
 }
+
+document.getElementById("filter").addEventListener('keyup',async(e)=>{   
+    //by using filter first fetch the data and using title we can filter 
+        try {
+            const res=await fetch("http://localhost:3000/api/getproducts",{headers:{
+                "Authorization" : `Bearer ${value}`}})
+            const products=await res.json();
+                        console.log(products);
+            str=``;
+            products.products.filter((i)=>i.pname.toLowerCase().includes(e.target.value.toLowerCase())).map((product)=>{
+    
+                str+=`
+                <div class="prods">
+                <a href="./pages/product.html?id=${product._id}">  
+                <img src="${product.images[0]}" alt=""> 
+               
+                 <div class="content">
+                     <h3>${product.pname}</h3>
+                     <h2>Rs ${product.price}</h2>
+                     <h4>${product.description}</h4>
+                 </div>
+                 </a>
+            </div>`
+            })
+    
+            document.getElementById("products").innerHTML=str;
+    
+        } catch (error) {
+            console.log(error);
+            
+            
+        }
+    });
+      

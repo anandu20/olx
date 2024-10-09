@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     }
-
+  
 .container{
     width: 100%;
     height: 100vh;
@@ -44,6 +44,7 @@
 .right{
     width: 60%;
     height: 100%;
+   
    
 }
 .details {
@@ -104,12 +105,41 @@
 /* we use anchor tag to fetch the details of product so give text decoration none for prods. a  to remove underline */
 
 .cat{
+    background-color: black;
+    width: 13.7%;
+    /* padding: 1%; */
+    height: 5vh;
+    justify-content: center;
+    text-align: center;
+    color: aliceblue;
     margin-top: 2%;
-    background-color: rgb(0, 14, 40);
-    width: 18%;
-    padding: 1%;
-    color: white;
-    margin-left: 2%;
-   
   
+}
+.navbar{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    background-color: rgba(149, 131, 131, 0.108);
+    justify-content: center;
+    justify-content: space-around;
+    justify-items: center;
+}
+.navbar img{
+    width: 50px;
+}
+.navbar input{
+    width: 70%;
+    height: 5vh;
+    border: 2px solid black;
+}
+.search{
+    display: flex;
+    align-items: center ;
+    width: 80%;
+
+}
+.search img{
+    background-color: black;
+    height: 5.4vh;
+   object-fit: contain;
 }

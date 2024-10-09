@@ -21,19 +21,21 @@ getUser();
 
 async function  getSProduct() {
     
-    const res=await fetch(`http://localhost:3000/api/getSProduct ${id}`)
+    const res=await fetch(`http://localhost:3000/api/getSProduct/${id}`)
     const products= await res.json();
+    console.log(products);
+    
     str=``;
     products.map((product)=>{
-        str=`
+        str+=`
         <div class="prods">
         <a href="./pages/product.html?id={product._id}">
         <img src="${product.images[0]}" alt="">
        
          <div class="content">
-             <h1>${product.pname}</h1>
-             <h2>Rs ${product.price}</h2>
-             <h3>${product.description}</h3>
+              <h3>${product.pname}</h3>
+              <h2>Rs ${product.price}</h2>
+               <h4>${product.description}</h4>
          </div>
          </a>
      </div>`

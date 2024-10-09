@@ -130,15 +130,24 @@
 
     }
     .prods img{
-        height: 250px;
+        width: 220px;
+        height: 160px;
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
         border-radius: 8px;
+            
     }
     .content{
-        text-align: center;
+        margin-top: 1%;
+        text-align: left;
         color: black;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-weight: lighter;
         font-size: 11px;
+    }
+    .content h2{
+        color: green;
     }
     .prods a{
         text-decoration: none; 

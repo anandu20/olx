@@ -18,9 +18,9 @@ async function getProducts() {
                 <img src="${product.images[0]}" alt=""> 
                
                  <div class="content">
-                     <h1>${product.pname}</h1>
+                     <h3>${product.pname}</h3>
                      <h2>Rs ${product.price}</h2>
-                     <h3>${product.description}</h3>
+                     <h4>${product.description}</h4>
                  </div>
                  </a>
             </div>`

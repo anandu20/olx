@@ -75,6 +75,7 @@
     margin-top: 2%;
     padding: 1%;
     border-radius: 8px;
+    transition:.5s ;
 
 }
 .prods img{
@@ -87,6 +88,13 @@
     background-position: center;
     background-size: cover;
     border-radius: 8px;
+
+
+
+}
+.prods:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 .content{
     margin-top: 1%;
@@ -119,7 +127,6 @@
     height: 10vh;
     width: 100%;
     display: flex;
-    background-color: rgba(149, 131, 131, 0.108);
     justify-content: center;
     justify-content: space-around;
     justify-items: center;

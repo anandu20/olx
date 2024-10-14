@@ -131,3 +131,32 @@ export async function signIn(req,res) {
     
     
 }
+
+
+export async function getProduct(req,res) {
+    try {
+        const {_id}=req.params;
+        const data=await productSchema.findOne({_id});
+        console.log("HAI");
+        
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+
+export async function editProduct(req,res){
+    try {
+        const {_id}=req.params
+        const {...products}=req.body;
+        const data=await productSchema.updateOne({_id},{$set:{...products}});
+        res.status(201).send(data)
+
+        
+    } catch (error) {
+        res.status(404).send(error)
+
+        
+    }
+
+}

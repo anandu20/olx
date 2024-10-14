@@ -15,7 +15,7 @@ async function getProducts() {
             result.products.map((product)=>{
                 str+=`
                 <div class="prods">
-                <a href="./pages/product.html?id=${product._id}">  
+                <a href="./pages/prod.html?id=${product._id}">  
                 <img src="${product.images[0]}" alt=""> 
                
                  <div class="content">
@@ -65,8 +65,8 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
     
                 str+=`
                 <div class="prods">
-                <a href="./pages/product.html?id=${product._id}">  
-                <img src="${product.images[0]}" alt=""> 
+                <a href="./pages/prod.html?id=${product._id}">  
+                <img src="${product.images[0]}" alt="" > 
                
                  <div class="content">
                      <h3>${product.pname}</h3>

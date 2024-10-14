@@ -21,15 +21,15 @@ getUser();
 
 async function  getSProduct() {
     
-    const res=await fetch(`http://localhost:3000/api/getSProduct/${id}`)
-    const products= await res.json();
+    const res=await fetch(`http://localhost:3000/api/getSProduct/${id}`) //fetch all data using api
+    const products= await res.json(); //    and store it in new variable
     console.log(products);
     
     str=``;
-    products.map((product)=>{
+    products.map((product)=>{  //maping by using another key named product
         str+=`
-        <div class="prods">
-        <a href="./pages/product.html?id={product._id}">
+    <div class="prods">
+        <a href="../pages/product.html?id=${product._id}">
         <img src="${product.images[0]}" alt="">
        
          <div class="content">
@@ -61,7 +61,7 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
     
                 str+=`
                 <div class="prods">
-                <a href="./pages/product.html?id=${product._id}">  
+                <a href="./product.html?id=${product._id}">  
                 <img src="${product.images[0]}" alt=""> 
                
                  <div class="content">
@@ -92,7 +92,7 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
         
                     str+=`
                     <div class="prods">
-                    <a href="./pages/product.html?id=${product._id}">  
+                    <a href="./product.html?id=${product._id}">  
                     <img src="${product.images[0]}" alt=""> 
                    
                      <div class="content">

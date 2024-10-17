@@ -8,6 +8,8 @@ async function getProduct(){
     const res2=await fetch(`http://localhost:3000/api/getuser/${product.sellerId}`);
     const user=await res2.json();
     console.log(product);
+    console.log(product.images[0]);
+
 
     document.getElementById("pname").innerText=product.pname;
     document.getElementById("img").src=product.images[0];
@@ -19,7 +21,6 @@ async function getProduct(){
     document.getElementById("address").innerText=user.address;
     document.getElementById("place").innerText=user.place;
     document.getElementById("pincode").innerText=user.pincode;
-    // document.getElementById("edit").innerHTML= `<a href="../pages/proedit.html?id=${product._id}">Edit</a>`
     product.images.map((img)=>{
         const data=document.createElement("img");
         data.src=img;

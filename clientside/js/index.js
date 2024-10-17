@@ -57,7 +57,7 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
     //by using filter first fetch the data and using title we can filter 
         try {
             const res=await fetch("http://localhost:3000/api/getproducts",{headers:{
-                "Authorization" : `Bearer ${value}`}})
+                "Authorization" : `Bearer ${value}`}})  // to get the global product details
             const products=await res.json();
                         console.log(products);
             str=``;
@@ -70,8 +70,8 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
                
                  <div class="content">
                      <h3>${product.pname}</h3>
-                     <h2>Rs ${product.price}</h2>
-                     <h4>${product.description}</h4>
+                     <h2>₹${product.price}</h2>
+                      <h4>${product.category}</h4>
                  </div>
                  </a>
             </div>`

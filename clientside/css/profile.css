@@ -34,7 +34,7 @@
 }
 .left button,.left a{
     padding: 10px 50px;
-    background-color: rgb(0, 14, 40);
+    background-color: rgb(14, 45, 102);
     color: white;
     font-size: 16px;
     border: none;
@@ -56,9 +56,9 @@
 }
 .details img{
     display: block;
-    height: 10px;
-    width: 10px;
-    margin-right: 1%;
+    height: 20px;
+    width: 20px;
+    margin-right: 2%;
 }
 
 #products{
@@ -113,8 +113,7 @@
 /* we use anchor tag to fetch the details of product so give text decoration none for prods. a  to remove underline */
 
 .cat{
-    background-color: black;
-    width: 13.7%;
+    background-color: rgb(14, 45, 102);    width: 13.7%;
     /* padding: 1%; */
     height: 5vh;
     justify-content: center;
@@ -138,6 +137,7 @@
     width: 70%;
     height: 5vh;
     border: 2px solid black;
+
 }
 .search{
     display: flex;
@@ -146,7 +146,7 @@
 
 }
 .search img{
-    background-color: black;
+    background-color: rgb(14, 45, 102);
     height: 5.4vh;
    object-fit: contain;
 }

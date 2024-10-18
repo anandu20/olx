@@ -1,3 +1,4 @@
+let buyerId;
 const value = localStorage.getItem("Auth");
 async function getProducts() {
 
@@ -6,6 +7,8 @@ async function getProducts() {
         const result = await res.json();
         
     if(res.status==200){
+        buyerId=result.id;
+
             document.getElementById("profileImage").src=`${result.profile}`
             document.getElementById("img2").src=`${result.profile}`
             document.getElementById("link").innerHTML=`<a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a>`
@@ -20,13 +23,20 @@ async function getProducts() {
                
                  <div class="content">
                      <h3>${product.pname}</h3>
-                     <h2>Rs ${product.price}</h2>
-                     <h4>${product.description}</h4>
+                     <h2>₹ ${product.price}</h2>
+                     <h4>${product.category}</h4>
                  </div>
                  </a>
+                    <div class="hearts">
+                        <img src="./images/normal.png" alt="" class="heart" onclick="toggleHeart(this,'${product._id}')" id=${product._id}>
+                    </div>
             </div>`
             });
             document.getElementById("products").innerHTML=str;
+            console.log(result.wlist);
+            result.wlist.map((l)=>{
+                document.getElementById(`${l.products._id}`).src='./images/red.png';
+            })
     }
     else{
         alert("Error");
@@ -70,14 +80,18 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
                
                  <div class="content">
                      <h3>${product.pname}</h3>
-                     <h2>₹${product.price}</h2>
+                     <h2> ${product.price}</h2>
                       <h4>${product.category}</h4>
                  </div>
                  </a>
+
             </div>`
             })
     
             document.getElementById("products").innerHTML=str;
+            result.wlist.map((l)=>{
+                document.getElementById(`${l.products._id}`).src='./images/red.png';
+            })
     
         } catch (error) {
             console.log(error);
@@ -85,4 +99,56 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
             
         }
     });
+
+    async function toggleHeart(heartElement,id) {
+        const normalHeart = './images/normal.png';
+        const redHeart = './images/red.png';
+        if (heartElement.currentSrc.includes('normal.png')) {
+            heartElement.src = redHeart;
+            const res=await fetch(`http://localhost:3000/api/getproduct/${id}`);
+        const products=await res.json();  
+        console.log(products);
+        fetch("http://localhost:3000/api/wishlist",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({buyerId,products})
+        }).then((res)=>{
+            console.log(res);
+            if(res.status==201){
+                console.log(buyerId,products);
+                alert("success")
+                console.log(res);  
+            }
+            else if (res.status==404){
+                alert("error")
+            }
+            else{
+                alert("error")
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+            
+        });
+        }
+         else {
+            heartElement.src = normalHeart;
+                fetch(`http://localhost:3000/api/deletewish/${id}`,{
+                  method:"DELETE",
+                      headers:{"Content-Type":"application/json"}
+                }).then((res)=>{
+                    console.log(id);
+                      console.log(res);
+                      if(res.status==201){
+                          alert("Deleted")
+                      }else{
+                          alert("error");
+                      }
+                  }). catch ((error)=>{
+                      console.log(error);
+                      
+                  })
+        }
+        
+    }
       

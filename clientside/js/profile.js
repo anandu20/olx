@@ -34,8 +34,8 @@ async function  getSProduct() {
        
          <div class="content">
               <h3>${product.pname}</h3>
-              <h2>Rs ${product.price}</h2>
-               <h4>${product.description}</h4>
+              <h2>₹ ${product.price}</h2>
+               <h4>${product.category}</h4>
          </div>
          </a>
      </div>`

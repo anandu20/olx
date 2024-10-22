@@ -65,6 +65,7 @@ body {
 .buttons {
     display: flex;
     justify-content: space-evenly;
+
 }
 button {
     border: none;
@@ -72,6 +73,7 @@ button {
     cursor: pointer;
     font-weight: bold;
     transition: .5s;
+
 }
 button:hover{
     transform: scale(1.2);
@@ -81,6 +83,7 @@ button:hover{
     background-color: #007BFF;
     padding: 12px 25px;
     color: white;
+
 }
 .delete-btn {
     background-color: #DC3545;
@@ -114,7 +117,6 @@ button:hover{
     width: 60px;
     height: 65px;
     margin-top: 10px;
-
     object-fit:cover;
 
 }
@@ -125,4 +127,10 @@ a{
 .head{
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+.book{
+    text-align: center;
+    padding: 18px 40px;
+
 }

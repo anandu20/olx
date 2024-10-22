@@ -150,3 +150,25 @@
     height: 5.4vh;
    object-fit: contain;
 }
+
+.books {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: rgb(29, 159, 72);
+    transition: .5s;
+    color: white;
+    margin-top: 15px;
+    margin-right: 80px;
+    padding: 12px 20px;
+
+}
+.books:hover{
+    transform: scale(1.1);
+    transition: .5s;
+}
+a{
+    text-decoration: none;
+    color: white;
+}

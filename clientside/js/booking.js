@@ -1,3 +1,4 @@
+
 const url=window.location.href;
 const urlParams=new URLSearchParams(url.split("?")[1]);
 const id=urlParams.get("id");
@@ -25,3 +26,48 @@ async function getBook() {
     document.getElementById("tbody").innerHTML=str;
 }
 getBook();
+
+// async function deleteBooking(_id) {
+//     console.log(_id);
+//     fetch( `http://localhost:3000/api/deletebooking`,{
+//         method:"DELETE",
+//         headers:{"Content-Type":"application/json"},
+//         body:JSON.stringify({_id})
+//     }).then (async(res)=>{
+//         const result=await res.json();
+//         if(res.status==201){
+//             alert(result.msg)
+
+//         }
+//         else{
+//             alert("error")
+//         }
+//     }).catch((error)=>{
+//         console.log(error);
+        
+//     })
+    
+    
+// }
+async function deleteBooking(_id) {
+    console.log(_id);
+    fetch(`http://localhost:3000/api/deletebooking`,{
+       method:"DELETE",
+       headers:{"Content-Type":"application/json"},
+       body:JSON.stringify({_id})
+    }).then(async(res)=>{
+        const result=await res.json();
+        if(res.status==201){
+            alert("success")
+        }
+        else{
+            alert("error")
+        }
+
+    }).catch((error)=>{
+        console.log(error);
+        
+        
+    })
+    
+}

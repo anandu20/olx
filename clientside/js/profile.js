@@ -116,4 +116,19 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
             }
         });
           
+        async function deleteAccount() {
+            const res=await fetch(`http://localhost:3000/api/deleteaccount/${id}`,{
+                method:"POST",
+                headers:{"Content-Type":"application/json"}
+            });
+            const result=await res.json();
+            if(res.status==201){
+                localStorage.setItem("id",`${result._id}`);
+                window.location.href="../pages/deleteAccount.html";
+            }
+            else{
+                alert(result.msg)
+            }
+    
+        }
       

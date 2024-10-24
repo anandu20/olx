@@ -113,13 +113,14 @@
 /* we use anchor tag to fetch the details of product so give text decoration none for prods. a  to remove underline */
 
 .cat{
-    background-color: rgb(14, 45, 102);    width: 13.7%;
-    /* padding: 1%; */
+    background-color: rgb(14, 45, 102);
     height: 5vh;
+    width: 150px;
     justify-content: center;
     text-align: center;
     color: aliceblue;
     margin-top: 2%;
+    align-items: center;
   
 }
 .navbar{
@@ -159,10 +160,11 @@
     background-color: rgb(29, 159, 72);
     transition: .5s;
     color: white;
-    margin-top: 25px;
+    margin-top: 16px;
     margin-right: 130px;
     padding: 12px 20px;
     /* line-height: 20px; */
+    display: flex;
 
 }
 .books:hover{

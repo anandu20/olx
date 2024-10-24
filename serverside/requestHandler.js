@@ -19,15 +19,22 @@ const transporter = nodemailer.createTransport({
 
 export async function getProducts(req,res) {
     try {
-        console.log(req.user.userId);
-        const _id = req.user.userId;
+        console.log("rq");
+        if(req.user!=null){
+            console.log("hai");
+            
+            const _id = req.user.userId;
         const user = await userSchema.findOne({_id});
-        console.log(user);
-        if(!user) 
-            return res.status(403).send({msg:"Unauthorized access"})
         const products=await productSchema.find({sellerId:{$ne:_id}});
         const wlist=await wishlistSchema.find({buyerId:_id});
         res.status(200).send({products,profile:user.profile,id:user._id,wlist})
+        }
+        else{
+            console.log("jis");
+            
+            const products1=await productSchema.find();
+            res.status(403).send({products1})
+        }
         
     } catch (error) {
         res.status(404).send({msg:error})
@@ -344,3 +351,13 @@ export async function accountOTP(req,res) {
     }
     
     
+    export async function deleteProduct(req,res) {
+        try {
+            const {_id}=req.params;
+            console.log(_id);
+            const result=await productSchema.deleteOne({_id});
+            return res.status(201).send({msg:"Product Deleted"});
+        } catch (error) {
+            res.status(404).send({msg:error})
+        }   
+    }

@@ -14,7 +14,7 @@ async function getProduct(){
     console.log(product);
     console.log(product.images[0]);
 
-
+    
     document.getElementById("pname").innerText=product.pname;
     document.getElementById("img").src=product.images[0];
     document.getElementById("description").innerText=product.description;

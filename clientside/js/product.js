@@ -9,6 +9,7 @@ async function getProduct(){
     const user=await res2.json();
     console.log(product);
 
+    document.getElementById("category").innerText=product.category;
     document.getElementById("pname").innerText=product.pname;
     document.getElementById("img").src=product.images[0];
     document.getElementById("description").innerText=product.description;
@@ -26,8 +27,6 @@ async function getProduct(){
         data.setAttribute("onmouseover",`change("${img}")`);
         document.getElementById("smallimg").appendChild(data);
     })
-
-  
 
 }
 getProduct();

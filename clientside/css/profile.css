@@ -159,9 +159,10 @@
     background-color: rgb(29, 159, 72);
     transition: .5s;
     color: white;
-    margin-top: 15px;
-    margin-right: 80px;
+    margin-top: 25px;
+    margin-right: 130px;
     padding: 12px 20px;
+    /* line-height: 20px; */
 
 }
 .books:hover{

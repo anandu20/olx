@@ -25,6 +25,7 @@ getProduct();
 document.getElementById("content").addEventListener("submit",async(e)=>{
     e.preventDefault();
     try {
+
     const pname=document.getElementById("pname").value;
     const price=document.getElementById("price").value;
     const category=document.getElementById("category").value;
